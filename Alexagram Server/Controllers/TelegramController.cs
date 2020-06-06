@@ -59,12 +59,13 @@ namespace Alexagram_Server.Controllers
         {
             if (auth != "Bl4f4s3L")
                 throw new Exception();
-            TelegramClient client = new TelegramClient(1712234, "9d90d5de6f3b358e615873ce4ca4e8e1",Globals.store,session);
-            await client.ConnectAsync();
-            //get available contacts
-            TLContacts result = await client.GetContactsAsync();
-            await client.ConnectAsync();
-            
+         
+                TelegramClient client = new TelegramClient(1712234, "9d90d5de6f3b358e615873ce4ca4e8e1", Globals.store, session);
+                await client.ConnectAsync();
+                //get available contacts
+                TLContacts result = await client.GetContactsAsync();
+                await client.ConnectAsync();
+        
   
    
             

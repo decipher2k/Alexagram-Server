@@ -11,6 +11,6 @@ namespace Alexagram_Server
     {
         public DbSet<Users> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=sqlite.db");
+            => options.UseSqlite("Data Source=./data/sqlite.db");
     }
 }

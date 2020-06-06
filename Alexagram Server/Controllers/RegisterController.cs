@@ -37,7 +37,7 @@ namespace Alexagram_Server.Controllers
             var db = new SQLiteDBContext();
             if (db.Users.Where(a => a.username == collection["username"].ToString()).Count() == 0)
             {
-                db.Users.Add(new Entities.Users() { password = collection["password"].ToString(), username = collection["username"].ToString(), session = "" });
+                db.Users.Add(new Entities.Users() { password = Globals.CreateMD5(collection["password"].ToString()), username = collection["username"].ToString(), session = "" });
                 db.SaveChanges();
             }
             else

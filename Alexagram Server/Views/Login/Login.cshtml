@@ -1,18 +1,23 @@
 ﻿@{
-    Layout = null;
+    Layout = "_Layout";
 }
-Login
-<br />
-<br />
-<form method="post" action="/Login/Login">
-    Username:<br />
-    <input type="text" name="username" /><br />
-    Password:<br />
-    <input type="password" name="password" /><br />
-    <input type="hidden" name="state" value="@Model.state" />
-    <input type="submit" name="Send" value="Send" />
-</form>
-<br />
-<br />
+    
+    <div class="row">
+        <div class="col-md-8 offset-md-4">
+            <h3>Login</h3>
+            <br />
+            <br />
+            <form method="post" action="/Login/Login">
+                Username:<br />
+                <input type="text" name="username" /><br />
+                Password:<br />
+                <input type="password" name="password" /><br />
+                <input type="hidden" name="state" value="@Model.state" />
+                <input type="submit" name="Send" value="Send" />
+            </form>
+            <br />
+            <br />
 
-<a href="/Register?state=@Model.state">Register</a>
+            <a href="/Register?state=@Model.state">Register</a>
+        </div>
+    </div>

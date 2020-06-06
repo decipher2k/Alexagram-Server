@@ -1,4 +1,6 @@
 ﻿@{
-    Layout = null;
+    Layout = "_Layout";
 }
-username taken
+    <div class="alert alert-danger">
+        <strong>Error!</strong> The username has allready been taken.<a href="/Register/?state=@Model.state">Login</a>
+    </div>

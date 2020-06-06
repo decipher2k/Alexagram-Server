@@ -7,6 +7,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\AuthError\**" />
+    <Compile Remove="Views\AuthFinished\**" />
+    <Compile Remove="Views\AuthStep2\**" />
+    <Compile Remove="Views\StartAuth\**" />
+    <Compile Remove="Views\UserCreated\**" />
+    <Compile Remove="Views\UsernameTaken\**" />
+    <Content Remove="Views\AuthError\**" />
+    <Content Remove="Views\AuthFinished\**" />
+    <Content Remove="Views\AuthStep2\**" />
+    <Content Remove="Views\StartAuth\**" />
+    <Content Remove="Views\UserCreated\**" />
+    <Content Remove="Views\UsernameTaken\**" />
+    <EmbeddedResource Remove="Views\AuthError\**" />
+    <EmbeddedResource Remove="Views\AuthFinished\**" />
+    <EmbeddedResource Remove="Views\AuthStep2\**" />
+    <EmbeddedResource Remove="Views\StartAuth\**" />
+    <EmbeddedResource Remove="Views\UserCreated\**" />
+    <EmbeddedResource Remove="Views\UsernameTaken\**" />
+    <None Remove="Views\AuthError\**" />
+    <None Remove="Views\AuthFinished\**" />
+    <None Remove="Views\AuthStep2\**" />
+    <None Remove="Views\StartAuth\**" />
+    <None Remove="Views\UserCreated\**" />
+    <None Remove="Views\UsernameTaken\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
@@ -18,15 +45,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
     <PackageReference Include="TLSharp.Core" Version="1.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\AuthError\" />
-    <Folder Include="Views\AuthFinished\" />
-    <Folder Include="Views\AuthStep2\" />
-    <Folder Include="Views\StartAuth\" />
-    <Folder Include="Views\UserCreated\" />
-    <Folder Include="Views\UsernameTaken\" />
   </ItemGroup>
 
 

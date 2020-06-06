@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,8 @@ namespace Alexagram_Server
     {
         public static void Main(string[] args)
         {
+            if (!Directory.Exists("./data"))
+                Directory.CreateDirectory("./data");
             CreateHostBuilder(args).Build().Run();
         }
 
