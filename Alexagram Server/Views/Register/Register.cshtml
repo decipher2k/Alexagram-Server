@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+Register
+<br />
+<br />
+<form method="post" action="/Register/Create">
+    Username:<br />
+    <input type="text" name="username" /><br />
+    Password:<br />
+    <input type="password" name="password" /><br />
+    <input type="hidden" name="state" value="@Model.state" />
+    <input type="submit" name="Send" value="Send" />
+</form>
+<br />
+<br />

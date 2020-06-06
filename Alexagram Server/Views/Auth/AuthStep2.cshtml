@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+    <form method="post" action="/Auth/Step2">
+        SMS Code:<br />
+        <input type="hidden" name="phone" value="@Model.phone" />
+        <input type="hidden" name="hash" value="@Model.hash" />
+        <input type="hidden" name="state" value="@Model.state" />
+        <input type="hidden" name="session" value="@Model.session" />
+        <input type="text" name="code" value="" /><br />
+        <input type="submit" name="Send" value="Send" />
+    </form>

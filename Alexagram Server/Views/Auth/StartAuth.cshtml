@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+}
+Telegram Account Linking
+<br />
+<form method="post" action="/Auth/Step1">
+    Phone Number: (it will not be saved by us)<br />
+    <input type="text" name="phone" value="" /><br />
+    <input type="hidden" name="state" value="@Model.state" />
+    <input type="submit" name="Send" value="Send" />
+</form>
