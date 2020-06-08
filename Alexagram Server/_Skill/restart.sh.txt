@@ -3,3 +3,4 @@ docker stop alexagram
 docker rm alexagram
 docker pull dehe25/alexagramserver:alexagram
 docker run -d -p 1702:80 -v /alexagram:/app/data --name alexagram dehe25/alexagramserver:alexagram
+ 
