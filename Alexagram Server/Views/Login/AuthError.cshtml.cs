@@ -9,6 +9,7 @@ namespace Alexagram_Server.Views.AuthError
 {
     public class AuthErrorModel : PageModel
     {
+        public string state { get; internal set; }
         public void OnGet()
         {
         }
