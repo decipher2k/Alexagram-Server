@@ -38,10 +38,11 @@
             <div class="wrap-login100">
                 <form class="login100-form" method="post" action="/Auth/Step1">
                     <input type="hidden" name="state" value="@Model.state" />
+                    <input type="hidden" name="session" value="@Model.session" />
                     <span class="login100-form-title p-b-26">
                         Link Telegram account
                     </span>
-          
+
 
                     <div class="wrap-input100">
                         <input class="input100" type="text" name="phone">
@@ -58,7 +59,7 @@
                         </div>
                     </div>
 
-                    
+
                 </form>
             </div>
         </div>

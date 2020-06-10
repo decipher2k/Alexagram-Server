@@ -76,6 +76,7 @@ namespace Alexagram_Server.Controllers
                 .Where(x => x.GetType() == typeof(TLUser))
                 .Cast<TLUser>();
             int user_id = 0;
+           
             if (user.ToList().Count != 0)
             {
                 foreach (var u in user)
@@ -88,8 +89,15 @@ namespace Alexagram_Server.Controllers
                     }
                 }
             }
-            await client.SendMessageAsync(new TLInputPeerUser() { UserId=user_id }, text);
-            return Ok("OK");
+            try { 
+                await client.SendMessageAsync(new TLInputPeerUser() { UserId=user_id }, text);
+                return Ok("OK");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+            
         }
 
         // PUT: api/Telegram/5

@@ -19,11 +19,22 @@ namespace Alexagram_Server.Controllers
         [HttpGet]
         public ActionResult Index([FromQuery(Name = "state")] String state)
         {
-            return View("Register", new Alexagram_Server.Views.Register.IndexModel() { state = state });
+            if (state == null)
+            {
+                return Ok("Please register using the alexa app.");
+            }
+            else
+            {
+                return View("Register", new Alexagram_Server.Views.Register.IndexModel() { state = state });
+            }
         }
 
 
-
+        private string genSession()
+        {
+            Guid obj = Guid.NewGuid();
+            return obj.ToString();
+        }
 
 
         // POST: RegisterController/Create
@@ -35,9 +46,9 @@ namespace Alexagram_Server.Controllers
             if (collection["username"].ToString() == "" || collection["password"].ToString() == "")
                 return View("EmptyData", new EmptyDataModel() { state = collection["state"].ToString() });
             var db = new SQLiteDBContext();
-            if (db.Users.Where(a => a.username == collection["username"].ToString()).Count() == 0)
+            if (db.Users.Where(a => a.username == collection["username"].ToString()).Count()==0)
             {
-                db.Users.Add(new Entities.Users() { password = Globals.CreateMD5(collection["password"].ToString()), username = collection["username"].ToString(), session = "" });
+                db.Users.Add(new Entities.Users() { password = Globals.CreateMD5(collection["password"].ToString()), username = collection["username"].ToString(), session = genSession() });
                 db.SaveChanges();
             }
             else

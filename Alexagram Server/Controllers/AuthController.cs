@@ -14,9 +14,9 @@ namespace Alexagram_Server.Controllers
     {
         // GET: AuthController
         [HttpGet("StartAuth")]
-        public ActionResult StartAuth([FromQuery(Name="state")]String state)
+        public ActionResult StartAuth([FromQuery(Name="state")]String state, [FromQuery(Name = "session")] String session)
         {
-            return View("StartAuth",new IndexModel() { state = state });
+            return View("StartAuth",new IndexModel() { state = state,session=session });
         }
 
      
@@ -24,13 +24,24 @@ namespace Alexagram_Server.Controllers
         [HttpPost("Step1")]
         public async Task<ActionResult> Step1(IFormCollection collection)
         {
-            String session = genSession();
+            try { 
+            // String session = "";
+            //if(collection["session"].ToString()!="")
+            String session = collection["session"].ToString();
+           //else
+           // session = collection["session"].ToString();
+
             TelegramClient client = new TelegramClient(1712234, "9d90d5de6f3b358e615873ce4ca4e8e1", Globals.store, session);
             await client.ConnectAsync();
             var hash = await client.SendCodeRequestAsync(collection["phone"].ToString());
 
             String state = collection["state"].ToString();
             return View("AuthStep2",new Views.AuthStep2.AuthStep2Model() { phone = collection["phone"].ToString() ,hash=hash, session=session,state=state});
+            }catch(Exception ex)
+            {
+                return View("StartAuth", new IndexModel() { state = collection["state"].ToString(), session = collection["session"].ToString()
+            });
+            }
         }
 
         private string genSession()
@@ -50,7 +61,14 @@ namespace Alexagram_Server.Controllers
             String state = collection["state"].ToString();
             TelegramClient client = new TelegramClient(1712234, "9d90d5de6f3b358e615873ce4ca4e8e1", Globals.store,session);
             await client.ConnectAsync();
-            await client.MakeAuthAsync(phone.Replace("&#x2B;","+"), hash, code);
+            try { 
+                await client.MakeAuthAsync(phone.Replace("&#x2B;","+"), hash, code);
+                
+            }
+            catch
+            {
+                return View("AuthAuthError", new Alexagram_Server.Views.AuthError.AuthAuthErrorModel { state = collection["state"].ToString() });
+            }
 
 
             try
